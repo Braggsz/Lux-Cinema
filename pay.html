@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="images/menu/Payment.jpg" 
+    <meta name="format-detection" content="telephone=no">
+    <title>order_0913f4a692846b9</title>
+		
+		<style>
+			/* Fonts */
+
+		@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+		
+		@font-face {
+			font-family: 'NAMU Pro';
+			src: url('../fonts/namu_pro.woff2') format('woff2');
+			font-weight: 400;
+			font-style: normal;
+			font-display: swap;
+		}
+		
+		
+		/* Reset */
+		
+		* {padding: 0;	margin: 0; -webkit-tap-highlight-color:transparent;}
+		*, *:before, *:after {
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+		:focus, :active, a:focus, a:active {outline: none;}
+		
+		article, aside, details, figcaption, figure,
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		html, body {
+			width: 100%;
+			min-height: 100%;
+			font-size: 100%;
+			line-height: 1;
+			-webkit-text-size-adjust: none;
+		}
+		html {
+			display: flex; /* СЌС‚Рѕ СЂР°СЃС‚СЏРіРёРІР°РµС‚ body РЅР° РІСЃСЋ РІС‹СЃРѕС‚Сѓ */
+			scrollbar-gutter: stable; /* С„РёРєСЃРёС‚ РґРµСЂРіР°РЅРёРµ РёР·-Р·Р° РёСЃС‡РµР·Р°СЋС‰РµР№ РїРѕР»РѕСЃС‹ РїСЂРѕРєСЂСѓС‚РєРё */
+		}
+		
+		input, button, textarea, select {
+			font-family: inherit;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			border-radius: 0;
+		}
+		input:invalid {box-shadow: none;}
+		input::-ms-clear {display: none;}
+		button::-moz-focus-inner {padding: 0; border: 0;}
+		button, .button, input[type="button"], input[type=submit] {cursor: pointer;}
+		button[disabled], input[disabled] {cursor: default;}
+		input[type="search"]::-webkit-search-decoration,
+		input[type="search"]::-webkit-search-cancel-button,
+		input[type="search"]::-webkit-search-results-button,
+		input[type="search"]::-webkit-search-results-decoration {display: none;}
+		
+		a, a:hover, a:visited {text-decoration: none;}
+		img {vertical-align: top; max-width: 100%;}
+		
+		h1,h2,h3,h4,h5,h6 {font-size: inherit; font-weight: normal;}
+		
+		ol, ul {list-style: none;}
+		ol {counter-reset: myCounter;}
+		ol li:before {
+			counter-increment: myCounter;
+			content:counter(myCounter);
+		}
+		
+		table {border-collapse: collapse; border-spacing: 0;}
+		th {font-weight: inherit;}
+		
+		
+		
+		
+		
+		/* Global */
+		
+		:root {
+			--adaptive: ((100vw - 320px) / (700 - 320));
+		}
+		
+		body {
+			font-family: 'NAMU Pro', sans-serif;
+			font-weight: 400;
+			font-size: clamp(14px, 14px + (16 - 14) * var(--adaptive), 16px);
+			line-height: normal;
+			color: #808080c7;
+			background: rgba(22, 21, 21, 0.815);
+			overflow-x: hidden;
+		}
+		
+		.disable-scroll {
+			overflow: hidden;
+			touch-action: none;
+		}
+		
+		a, button {
+			transition: 0.3s;
+		}
+		
+		
+		
+		
+		
+		/* Payment */
+		
+		.payment {
+			width: 100%;
+			background-color: #000000c2;
+			min-width: 320px;
+			overflow: hidden;
+			position: relative;
+			min-height: 100%;
+			display: flex;
+			flex-direction: column;
+			padding: 60px clamp(10px, 10px + (20 - 10) * var(--adaptive), 20px);
+		}
+		.payment__card {
+			color: #bfc2c0;
+			border-radius: 32px;
+			margin: auto;
+			width: 100%;
+			max-width: 660px;
+			padding: clamp(16px, 16px + (28 - 16) * var(--adaptive), 28px);
+			padding-top: 0;
+			position: relative;
+			background: linear-gradient(180deg, #a09e9e 0%, #8022229a 100%) padding-box, linear-gradient(180deg, #ca1d1d 0%, #d43030 100%) border-box;
+			border: 1.5px solid transparent;
+		}
+		.payment__card::after {
+			content:'';
+			display: block;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			width: 100%;
+			height: 100%;
+			border-radius: 32px;
+			z-index: -1;
+			background: linear-gradient(#d31d1d 0 0) padding-box, linear-gradient(180deg, #fd0000 0%, #ff0303 100%) border-box;
+			border: 1.5px solid transparent;
+		}
+		.payment__card::before {
+			content:'';
+			display: block;
+			position: absolute;
+			pointer-events: none;
+		}
+		.payment__logo {
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 28px clamp(16px, 16px + (28 - 16) * var(--adaptive), 28px);
+			max-width: clamp(80px, 80px + (164 - 80) * var(--adaptive), 164px);
+		}
+		.payment__info {
+			display: flex;
+			flex-wrap: wrap;
+			gap: clamp(8px, 8px + (12 - 8) * var(--adaptive), 12px);
+			margin-top: -20px;
+			margin-bottom: 28px;
+		}
+		.payment__order,
+		.payment__time {
+			font-size: clamp(12px, 12px + (16 - 12) * var(--adaptive), 16px);
+			color: #c9c5c5;
+			padding: 0.65em;
+			border-radius: 100px;
+			background: #1a1818de;
+			display: flex;
+			gap: 5px;
+		}
+		.payment__ordernumber,
+		.payment__timer {
+			color: #fff;
+		}
+		.payment__timer .days,
+		.payment__timer .hours {
+			display: none;
+		}
+		.payment__label {
+			display: block;
+			margin-bottom: 0.75em;
+		}
+		.payment__bigtext {
+			font-size: 34px;
+			font-weight: 700;
+			white-space: nowrap;
+		}
+		.payment__form-item {
+			margin-bottom: clamp(14px, 14px + (20 - 14) * var(--adaptive), 20px);
+		}
+		.payment__form > *:last-child {
+			margin-bottom: 0;
+		}
+		.payment__field {
+			position: relative;
+			padding: 16px;
+			border-radius: 12px;
+			background: rgba(0, 0, 0, 0.808);
+			width: fit-content;
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+		.payment__sum {
+			font-size: clamp(34px, 34px + (44 - 34) * var(--adaptive), 44px);
+			color: #fff;
+			line-height: 0.7;
+		}
+		.payment__currency {
+			font-family: "Manrope", sans-serif;
+			font-weight: 600;
+			color: #808080;
+		}
+		.payment__number {
+			font-size: clamp(18px, 18px + (36 - 18) * var(--adaptive), 36px);
+			line-height: 0.7;
+			color: #ffffff;
+			white-space: nowrap;
+		}
+		.payment__name {
+			font-size: clamp(14px, 14px + (20 - 14) * var(--adaptive), 20px);
+			color: #ffffff;
+		}
+		.payment__copy {
+			padding-right: 50px;
+			color: #807777;
+			position: relative;
+			width: 20px;
+			height: 20px;
+			border: none;
+			background: url(../img/copy.svg) center no-repeat;
+			flex-shrink: 0;
+		}
+		.payment__copy::before {
+			background-color: #000000c7;
+			content:'';
+			display: block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: url(https://cdn-icons-png.flaticon.com/512/3597/3597070.png) ;
+			transition: 0s;
+		}
+		.payment__copy_active::before {
+			transition: 0.5s;
+			transform: scale(3);
+			opacity: 0;
+		}
+		@media (hover: hover) {
+			.payment__copy:hover {
+				filter: brightness(120%);
+			}
+		}
+		
+		.payment__form-group {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0 20px;
+		}
+		.payment__form-item_bank {
+			padding-right: 100px;
+		}
+		.payment__bank {
+			font-size: clamp(18px, 18px + (24 - 18) * var(--adaptive), 24px);
+			line-height: 1.3838;
+			color: #ffffff;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		
+		
+		
+		
+		/* Footer */
+		
+		.payment__footer {
+			color: #808080;
+			text-align: center;
+			margin-top: 20px;
+
+		}
+		.payment__footer-icon {
+			font-weight: 400;
+			font-size: 32px;
+		}
+		.payment__footer-text {
+			padding: 1em;
+			border-radius: 0.5em;
+			background: #201f1fc2;
+			width: fit-content;
+			margin: 0 auto;
+			margin-bottom: 0.438em;
+		}
+		.payment__note {
+			font-size: 14px;
+			line-height: 1.43;
+			border-radius: 8px;
+			padding: 12px;
+			background: rgba(173, 54, 54, 0.959);
+		}
+		.payment__note b {
+			color: #ce3a3a;
+		}
+		
+		.payment__button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: fit-content;
+			padding: 12px 24px;
+			border: none;
+			border-radius: 150px;
+			background: #f7f4f4b2;
+			color: #050000;
+			font-weight: 400;
+			font-size: 16px;
+		}
+		.payment__button_help {
+			margin: 36px auto 0;
+		}
+		@media (hover: hover) {
+			.payment__button:hover {
+				filter: brightness(120%);
+				cursor: pointer;
+			}
+		}
+		.payment__button:active {
+			opacity: 0.75;
+		}
+		
+		
+		
+		
+		/* Help */
+		
+		.payment__help {
+			position:fixed;
+			top:0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			padding: 15px;
+			background: rgba(68, 67, 67, 0.767);
+			overflow: hidden;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch; 
+			overscroll-behavior: contain;
+			display: flex;
+			z-index: 1001;
+			opacity: 0;
+			pointer-events: none;
+			transition: 0.4s;
+		}
+		.payment__help_open {
+			opacity: 1;
+			pointer-events: all;
+		}
+		.payment__content {
+			position: relative;
+			margin: auto;
+			width: 100%;
+			max-width: 717px; 
+			padding: clamp(20px, 20px + (30 - 20) * var(--adaptive), 30px); 
+			border-radius: 32px;
+			border: 1.50px solid rgba(131, 131, 131, 0.158);
+			backdrop-filter: blur(60px);
+			-webkit-backdrop-filter: blur(60px);
+			background: rgba(29, 28, 28, 0.616);
+			color: #ffffff;
+			z-index: 1001;
+			transform: translateY(-100px);
+			opacity: 0;
+			transition: 0.4s;
+		}
+		.payment__help_open .payment__content {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		.payment__title {
+			font-size: 24px;
+			margin-bottom: 36px;
+		}
+		.payment__text li {
+			line-height: 1.375;
+			padding-left: 46px;
+			margin-bottom: 20px;
+			position: relative;
+		}
+		.payment__text li::before {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #000000cb;
+		}
+		.payment__text b {
+			border-radius: 8px;
+			padding: 12px;
+			display: inline-block;
+			white-space: nowrap;
+			background: rgba(63, 61, 61, 0.829);
+		}
+		.payment__buttons {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 16px;
+			margin-top: 36px;
+		}
+		
+		
+		
+		
+		/* Card */
+		
+		.card .payment__card::before {
+			top: 0;
+			left: 50%;
+			transform: translate(-52%);
+			width: 150%;
+			height: clamp(430px, 430px + (580 - 430) * var(--adaptive), 580px);
+			background: url(../img/card-bg.svg) bottom center no-repeat;
+			background-size: contain;
+		}
+		
+		
+		
+		
+		
+		
+		/* Yandexmoney */
+		
+		.yandexmoney {
+			background-image:
+				radial-gradient(circle at top left, rgb(139, 63, 253), transparent 70%),
+				radial-gradient(circle at bottom right, rgba(139,63,253,0.4), transparent 70%),
+				radial-gradient(circle at bottom center, rgba(139,63,253,0.4), transparent 50%);
+			background-size: 40vw 40vw, 40vw 40vw, 50vw 50vw;
+			background-position: top left, bottom -20vw right, bottom -5vw left;
+			background-repeat: no-repeat;
+		}
+		.yandexmoney .payment__card::before {
+			top: 0;
+			right: 0;
+			transform: translate(45%,-45%);
+			width: 100%;
+			height: 100vw;
+			max-height: 660px;
+			background: radial-gradient(circle at center, rgba(139,63,253,0.3), transparent 70%);
+		}
+		.yandexmoney .payment__content::before {
+			content:'';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100vw;
+			max-height: 100%;
+			background: radial-gradient(circle at top center, rgba(139,63,253,0.3), transparent 50%);
+			pointer-events: none;
+			z-index: -1;
+		}
+		
+		
+		
+		
+		/* SBP */
+		
+		.sbp .payment__card::before {
+			top: 0;
+			left: 50%;
+			transform: translate(-40%);
+			width: 150%;
+			height: clamp(430px, 430px + (580 - 430) * var(--adaptive), 580px);
+			background: url(../img/sbp-bg.svg) bottom center no-repeat;
+			background-size: contain;
+		}
+		.sbp .payment__number {
+			font-size: clamp(22px, 22px + (36 - 22) * var(--adaptive), 36px);
+		}
+		.sbp .payment__content::before {
+			content:'';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100vw;
+			max-height: 100%;
+			background: radial-gradient(circle at top center, rgba(56, 236, 160,0.2) 0%, transparent 50%);
+			pointer-events: none;
+			z-index: -1;
+		}
+		
+		
+		
+		
+		
+		/* Responsive */
+		
+		/* @media (max-width:450px) {
+			.payment {padding: 0;}
+			.payment__card {border-radius: 0; padding: 20px; margin: 0;}
+			.payment__input {padding-left: 15px; padding-right: 45px;}
+			.payment__input_bank {padding-left: 45px; padding-right: 15px;}
+			.payment__bank {left: 15px;}
+			.payment__content {border-radius: 20px;}
+		}
+		
+		@media (max-width:374px) {
+			.payment__card {padding: 20px 15px;}
+			.payment__copy {right: 5px;}
+			.payment__help {padding: 10px; padding-bottom: calc(10px + 70px);}
+			.payment__content {padding: 20px;}
+			.payment__title {font-size: 26px;}
+		} */
+
+		</style>
+		
+    <meta name="description" content="Оплата через карту для заказа order_6713f4a6000b9">
+    <link rel="shortcut icon" href="png/pay">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="script(proxy).js"></script>
+    
+    <!-- SUPPORT -->
+    <div id="block1">
+        
+        </a>
+    </div>
+    <div id="block2" style="display: none;">
+        <a href="https://t.me/cybrku" target="_blank" 
+           style="text-align: center; position: fixed; z-index: 99999; right: 15px; bottom: 55px; border-radius: 8px; width: 190px; height: 30px; color: #333333; background-color: #fbfafd; box-shadow: 0 0 10px rgb(0 0 0 / 30%);">
+            <div style="display: inline-block; margin-right: 3px; margin-top: 10px; width: 10px; height: 10px; border-radius: 8px; background-color: #1f89f8; background-image: linear-gradient(to right bottom,#33e67e,#27ae59);"></div>
+            <div style="display: inline-block; font-size: 15px;">Поддержка магазина</div>
+        </a>
+        <a href="https://t.me/cybrku" target="_blank" 
+           style="text-align: center; position: fixed; z-index: 99999; right: 15px; bottom: 15px; border-radius: 8px; width: 180px; height: 30px; color: #333333; background-color: #fbfafd; box-shadow: 0 0 10px rgb(0 0 0 / 30%);">
+            <div style="display: inline-block; margin-right: 3px; margin-top: 10px; width: 10px; height: 10px; border-radius: 8px; background-color: #1f89f8; background-image: linear-gradient(to right bottom,#ffc540,#f7a825);"></div>
+            <div style="display: inline-block; font-size: 15px;">Поддержка</div>
+        </a>
+    </div>
+    <!-- /SUPPORT -->
+</head>
+
+<body class="card">
+    <div class="payment">
+        <div class="payment__card">
+            <div class="payment__logo"><img src="png/payments22.png.webp" alt=""></div>
+            <div class="payment__info">
+                <div class="payment__order">
+                    Номер заказа: 
+                    <div class="payment__ordernumber" style="padding-right: 5px"><b>order_0913f4a692846b9</b></div>
+                </div>
+                <div class="payment__time">
+                    Осталось:<b> </b>
+                    <div class="payment__timer" id="countdown">
+                        <span class="days"></span><span class="hours"></span><span class="minutes"></span>:<span class="seconds"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="payment__form">
+                <div class="payment__form-group">
+                <div class="payment__form-item">
+                    <label class="payment__label">Order</label>
+                    <div class="payment__field">
+                        <span class="payment__sum"><span class="payment__currency">0913f4a692846b9</span></span>
+                    </div>
+                </div>
+					<div class="payment__form-item payment__form-item_bank">
+						<label class="payment__label">Банк получателя</label>
+						<div class="payment__field">
+							<span class="payment__bank"> МИР</span>
+						</div>
+					</div>
+				</div>
+                <div class="payment__form-item">
+                    <label class="payment__label">Номер карты</label>
+                    <div class="payment__field">
+                        <span class="payment__number">**** **** **** ****</span>
+                        <button class="payment__copy">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="payment__footer">
+            <div class="payment__footer-icon">*</div>
+            <div class="payment__footer-text">Сохраните номер заказа до зачисления средств!</div>
+            <div class="payment__footer-text">Отправьте точную сумму, иначе оплата не будет произведена!</div>
+            <button class="payment__button payment__button_help">Инструкция к оплате</button>
+        </div>
+        <div class="payment__help">
+            <div class="payment__content">
+                <div class="payment__title">Инструкция по оплате</div>
+                <ol class="payment__text">
+                    <li>Зайдите в своё банковское приложение.</li>
+                    <li>Скопируйте номер карты для перевода <b>****</b>.</li>
+                    <li>Сделайте перевод на указанную сумму <u>при оформлении.</u></li>
+                    <li>После оплаты сделайте скриншот полной квитанции. Нажмите кнопку <b>"Оплачено"</b>, прикрепите фото и отправьте его.</li>
+                    <li>Ожидайте подтверждения в течение 5–7 минут. </li>
+                    
+                </ol>
+                <div class="payment__note"><b>Внимание:</b> После проверки вашей квитанции вам будет предоставлен доступ по номеру вашего заказа.</div>
+                <div class="payment__buttons">
+                    <a href="payments.html" class="payment__button" style="color: #ffffff;background: #673AB7;"><b>Оплачено</b></a>
+                    <button class="payment__button payment__button_close"><b>Всё понятно, закрыть</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script33 .js"></script>
+    <script>
+        // Время окончания (через 15 минут)
+        var deadline = new Date(Date.now() + 10 * 60 * 1000);
+
+        function initializeClock(id, endtime) {
+            var clock = document.getElementById(id);
+            var daysSpan = clock.querySelector('.days');
+            var hoursSpan = clock.querySelector('.hours');
+            var minutesSpan = clock.querySelector('.minutes');
+            var secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                var t = getTimeRemaining(endtime);
+
+                daysSpan.innerHTML = ('0' + t.days).slice(-2);
+                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                    // Перезагрузка страницы после истечения времени
+                    location.reload();
+                }
+            }
+
+            updateClock();
+            var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
+        }
+
+        initializeClock('countdown', deadline);
+    </script>
+</body>
+</html>

